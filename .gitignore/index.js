@@ -11,6 +11,8 @@ client.on('ready', () =>{
 client.on('message', (message) =>{
 
     let args = message.content.split(" ");  //récupération des arguments du message
+    let m = Number(args[1]);
+
     if(message.content.startsWith(prefix)){
         if(args.length < 2){
             let random = getRandomInt(citation.length);
@@ -37,6 +39,8 @@ client.on('message', (message) =>{
                     citation.splice(n-1 , 1);
                 }
             }
+        }else if(m != NaN){
+            message.channel.sendMessage(citation[m-1])
         }
 
     }
