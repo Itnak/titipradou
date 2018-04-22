@@ -47,4 +47,4 @@ function getRandomInt(max) {        //fonction du random
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-client.login("NDM2OTE0NDEwMTk2NTY2MDI2.DbucZA.0PmaQ0FCn-0ZFm8V2Bm-e-7OaPs");
+client.login(process.env.TOKEN);
