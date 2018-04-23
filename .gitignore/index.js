@@ -2,7 +2,8 @@ const discord = require("discord.js");
 const client = new discord.Client();
 
 let prefix = "!titi"
-let citation = ["44 calories !", "Racine de 2 !"]   //tableau contenant les citations
+let citation = ["44 calories !", "Comprenons nous bien...", "C\'est la poêle qui se moque du chaudron !", "Et les arboriculteurs ?", "Permanganate de potassium !", "Complètement azymutés...", "Range ton Gameboy !", "Et les pompiers ?", "Je vous ai parlé de l\'usine de recyclage ?", "T'es en Mat Sup toi !  (Hé ! Hé !)", "Je recapèpète !", "Bac a sable ?", "Playmobil ?", "A partir de 4 mètres ça commence à être dangereux.", "A cet âge là c\'est joueur !", "Erreur classique !", "Etourderie ! Etourderie !", "Attention ! Sinon j\'enlève 1/8 de point !", "Je vous ai parlé de la centrale de Chinon ?", "Je vais finir par vous appeler chamallow !", "Tu prends une poutre...", "Et les électrons célibataires ?", ":pradier1:", ":pradier2:", "Je me sens bafoué, humilié et méprisé.", "Ils font le jeu de la droite.", "Ça c'est un point de TP en moins !", "Il comprend vite mais faut lui expliquer longtemps...", "On ne bouge pas la burette !", "La machine à laver ça suce bien !", "C\'est visqueux et sucré.", "Un bon gros glaçon !", "Racine de 2 !", "Le dilemme c\'est le prix.", "Enfin ! Le Fluor c\'est vachement aggressif !", "C\'est comme une salade de fruit.", "En chimie, il y a toujours plusieurs chemin.", "C\'est comme le vin !", "Ca c'est de la chimie allemande."]   //tableau contenant les citations
+
 
 client.on('ready', () =>{
     console.log("Titi est lancé !");
