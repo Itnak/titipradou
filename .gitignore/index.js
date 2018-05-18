@@ -1,11 +1,11 @@
 const discord = require("discord.js");
 const client = new discord.Client();
+const jimp = require("jimp");
 
 let prefix = "!titi"
-let citation = ["44 calories !", "Comprenons nous bien...", "C\'est la poêle qui se moque du chaudron !", "Et les arboriculteurs ?", "Permanganate de potassium !", "Complètement azymutés...", "Range ton Gameboy !", "Et les pompiers ?", "Je vous ai parlé de l\'usine de recyclage ?", "T'es en Mat Sup toi !  (Hé ! Hé !)", "Je recapèpète !", "Bac a sable ?", "Playmobil ?", "A partir de 4 mètres ça commence à être dangereux.", "A cet âge là c\'est joueur !", "Erreur classique !", "Etourderie ! Etourderie !", "Attention ! Sinon j\'enlève 1/8 de point !", "Je vous ai parlé de la centrale de Chinon ?", "Je vais finir par vous appeler chamallow !", "Tu prends une poutre...", "Et les électrons célibataires ?", "Je me sens bafoué, humilié et méprisé.", "Ils font le jeu de la droite.", "Ça c'est un point de TP en moins !", "Il comprend vite mais faut lui expliquer longtemps...", "On ne bouge pas la burette !", "La machine à laver ça suce bien !", "C\'est visqueux et sucré.", "Un bon gros glaçon !", "Racine de 2 !", "Le dilemme c\'est le prix.", "Enfin ! Le Fluor c\'est vachement aggressif !", "C\'est comme une salade de fruit.", "En chimie, il y a toujours plusieurs chemin.", "C\'est comme le vin !", "Ca c'est de la chimie allemande."]   //tableau contenant les citations
+let citation = ["44 calories !", "Comprenons nous bien...", "C\'est la poêle qui se moque du chaudron !", "Et les arboriculteurs ?", "Permanganate de potassium !", "Complètement azymutés...", "Range ton Gameboy !", "Et les pompiers ?", "Je vous ai parlé de l\'usine de recyclage ?", "T'es en Mat Sup toi !  (Hé ! Hé !)", "Je recapèpète !", "Bac a sable ?", "Playmobil ?", "A partir de 4 mètres ça commence à être dangereux.", "A cet âge là c\'est joueur !", "Erreur classique !", "Etourderie ! Etourderie !", "Attention ! Sinon j\'enlève 1/8 de point !", "Je vous ai parlé de la centrale de Chinon ?", "Je vais finir par vous appeler chamallow !", "Tu prends une poutre...", "Et les électrons célibataires ?", "Je me sens bafoué, humilié et méprisé.", "Ils font le jeu de la droite.", "Ça c'est un point de TP en moins !", "Il comprend vite mais faut lui expliquer longtemps...", "On ne bouge pas la burette !", "La machine à laver ça suce bien !", "C\'est visqueux et sucré.", "Un bon gros glaçon !", "Racine de 2 !", "Le dilemme c\'est le prix.", "Enfin ! Le Fluor c\'est vachement aggressif !", "C\'est comme une salade de fruit.", "En chimie, il y a toujours plusieurs chemins.", "C\'est comme le vin !", "Ca c'est de la chimie allemande."]   //tableau contenant les citations
 
-
-client.on('ready', () =>{
+client.on('ready', () =>{''
     console.log("Titi est lancé !");
 })  
 
@@ -23,7 +23,7 @@ client.on('message', (message) =>{
                 let newCitation = message.content.substring(10);
                 citation.push(newCitation);
                 message.channel.sendMessage("Titi a bien pris en compte votre citation : " + newCitation);
-                console.log(citation)
+                console.log(citation);
             }else{
                 message.channel.sendMessage("Titi est totalement azimuté : vous n'avez pas mis de citation !");
             }
@@ -43,6 +43,21 @@ client.on('message', (message) =>{
         }else if(m != NaN){
             message.channel.sendMessage(citation[m-1])
         }
+        else if(args[1]=='img'){    //setup image de pradier_bulle
+            let random = getRandomInt(citation.length);
+            jimp.read("pradier_bulle.png").then((image) => {
+                let file = "file." + image.extension
+                jimp.loadFont(jimp.FONT_SANS_32_BLACK).then((font) => {
+                    image.print(font,175,160,citation[random]);
+                    image.write(file);
+                })
+                client.sendFile(message.channel,file);
+            }).catch((err) => {
+                console.log(err);
+            })
+
+        }
+            
 
     }
 
